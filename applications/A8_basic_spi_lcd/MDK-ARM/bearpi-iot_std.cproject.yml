@@ -1,0 +1,141 @@
+project:
+  packs:
+    - pack: Keil::STM32L4xx_DFP
+    - pack: ARM::CMSIS
+    - pack: ARM::CMSIS-NN
+    - pack: ARM::CMSIS-DSP
+  setups:
+    - setup: Options for bearpiiotstd
+      processor:
+        trustzone: non-secure
+      add-path:
+        - ../../../Core/Inc
+        - ../../../Drivers/STM32L4xx_HAL_Driver/Inc
+        - ../../../Drivers/STM32L4xx_HAL_Driver/Inc/Legacy
+        - ../../../Drivers/CMSIS/Device/ST/STM32L4xx/Include
+        - ../../../Drivers/CMSIS/Include
+        - ../../../Hardware/LCD
+        - ../../../Hardware/FLASH
+        - ../../../Hardware/QSPI_FLASH
+        - ../../../Hardware/FATFS/App
+        - ../../../Hardware/FATFS/Target
+        - ../../../Middlewares/Third_Party/FatFs/src
+      debug: "on"
+      define:
+        - USE_HAL_DRIVER
+        - STM32L431xx
+        - __MICROLIB
+      misc:
+        - C:
+            - -std=c99
+          C-CPP:
+            - -fno-rtti
+            - -funsigned-char
+            - -fshort-enums
+            - -fshort-wchar
+            - -ffunction-sections
+            - -Wno-packed
+            - -Wno-missing-variable-declarations
+            - -Wno-missing-prototypes
+            - -Wno-missing-noreturn
+            - -Wno-sign-conversion
+            - -Wno-nonportable-include-path
+            - -Wno-reserved-id-macro
+            - -Wno-unused-macros
+            - -Wno-documentation-unknown-command
+            - -Wno-documentation
+            - -Wno-license-management
+            - -Wno-parentheses-equality
+          CPP:
+            - -xc++
+            - -std=c++11
+          Link:
+            - --library_type=microlib
+            - --map
+            - --load_addr_map_info
+            - --xref
+            - --callgraph
+            - --symbols
+            - --info sizes
+            - --info totals
+            - --info unused
+            - --info veneers
+            - --strict
+            - --summary_stderr
+            - --info summarysizes
+  linker:
+    - script: bearpi-iot_std_bearpiiotstd.sct
+  groups:
+    - group: Application/MDK-ARM
+      files:
+        - file: startup_stm32l431xx.s
+          misc:
+            - ASM:
+                - -masm=auto
+    - group: Application/User/Core
+      files:
+        - file: ../main.c
+        - file: ../../../Core/Src/gpio.c
+        - file: ../../../Core/Src/adc.c
+        - file: ../../../Core/Src/dac.c
+        - file: ../../../Core/Src/dma.c
+        - file: ../../../Core/Src/i2c.c
+        - file: ../../../Core/Src/usart.c
+        - file: ../../../Core/Src/quadspi.c
+        - file: ../../../Core/Src/sdmmc.c
+        - file: ../../../Core/Src/spi.c
+        - file: ../../../Core/Src/tim.c
+        - file: ../../../Core/Src/stm32l4xx_it.c
+        - file: ../../../Core/Src/stm32l4xx_hal_msp.c
+    - group: Drivers/STM32L4xx_HAL_Driver
+      files:
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_adc.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_adc_ex.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_i2c_ex.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_rcc_ex.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ex.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_flash_ramfunc.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_gpio.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dma_ex.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_pwr_ex.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_cortex.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_exti.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dac.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_dac_ex.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_uart_ex.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_qspi.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_ll_sdmmc.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_sd.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_sd_ex.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_spi_ex.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim.c
+        - file: ../../../Drivers/STM32L4xx_HAL_Driver/Src/stm32l4xx_hal_tim_ex.c
+    - group: Drivers/CMSIS
+      files:
+        - file: ../../../Core/Src/system_stm32l4xx.c
+    - group: Hardware
+      files:
+        - file: ../../../Hardware/LCD/HzLib.c
+        - file: ../../../Hardware/LCD/lcd.c
+        - file: ../../../Hardware/FLASH/flash.c
+        - file: ../../../Hardware/QSPI_FLASH/hal_qspi_flash.c
+    - group: Middlewares/FatFs
+      files:
+        - file: ../../../Hardware/FATFS/App/fatfs.c
+        - file: ../../../Hardware/FATFS/Target/sd_diskio.c
+        - file: ../../../Hardware/FATFS/Target/bsp_driver_sd.c
+        - file: ../../../Middlewares/Third_Party/FatFs/src/option/syscall.c
+        - file: ../../../Middlewares/Third_Party/FatFs/src/diskio.c
+        - file: ../../../Middlewares/Third_Party/FatFs/src/ff.c
+        - file: ../../../Middlewares/Third_Party/FatFs/src/ff_gen_drv.c
+        - file: ../../../Middlewares/Third_Party/FatFs/src/option/cc936.c
+  components:
+    - component: ARM::CMSIS:CORE

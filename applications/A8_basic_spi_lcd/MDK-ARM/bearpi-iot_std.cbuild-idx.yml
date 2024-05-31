@@ -1,0 +1,9 @@
+build-idx:
+  generated-by: csolution version 2.2.1
+  csolution: bearpi-iot_std.csolution.yml
+  cprojects:
+    - cproject: bearpi-iot_std.cproject.yml
+  cbuilds:
+    - cbuild: bearpi-iot_std+bearpiiotstd.cbuild.yml
+      project: bearpi-iot_std
+      configuration: +bearpiiotstd
