@@ -45,24 +45,8 @@ BearPi-IoT Std提供多个STM32基础案例，方便初学者由浅入深逐步�
 
 | 编号 | 类别   | 例程名           | 说明                                                         |
 | ---- | ------ | ---------------- | ------------------------------------------------------------ |
-| A1   | 基础   | basic_led        |   [蓝色 LED 不间断闪烁](/applications/A1_basic_led)  |
-| A2   | 基础   | basic_key            |  [轮训方式读取按键状态，并控制LED灯](/applications/A2_basic_key)|
-| A3   | 基础   | basic_key_irq            |   [中断方式读取按键状态，并控制LED灯](/applications/A3_basic_key_irq )|
-| A4   | 基础   | basic_uart            |   [串口收发测试](/applications/A4_basic_uart)|
-| A5   | 基础   | basic_dac             |   [DAC模拟电压输出](/applications/A5_basic_dac)|
-| A6   | 基础   | basic_adc_dma           |    [ADC读取电压](/applications/A6_basic_adc_dma)|
-| A7   | 基础   | basic_tim2        |   [定时器控制LED闪烁](/applications/A7_basic_tim2)|
 | A8   | 基础   | basic_spi_lcd           |  [SPI屏幕测试](/applications/A8_basic_spi_lcd)|
-| A9   | 基础   | basic_flash          |   [内部flash读写测试](/applications/A9_basic_flash)|
-| A10   | 基础   | basic_qspi_w25q64          |   [外部W25Q64 flash读写测试](/applications/A10_basic_qspi_w25q64)|
-| A11   | 基础   | basic_sdio_sdmmc1       |   [外部SD卡读写测试](/applications/A11_basic_sdio_sdmmc1)|
-| A12   | 基础   | basic_sdio_sdmmc1_fatfs       |  [外部SD卡文件系统读写测试](/applications/A12_basic_sdio_sdmmc1_fatfs)|
-| B1   | E53传感器   | e53_sc1_pls               | [E53_SC1案例扩展板测试](/applications/B1_e53_sc1_pls)|
-| B2   | E53传感器   | e53_ia1_temp_humi_pls     | [E53_IA1案例扩展板测试](/applications/B2_e53_ia1_temp_humi_pls)|
-| B3   | E53传感器   | e53_sf1_smoke             | [E53_SF1案例扩展板测试](/applications/B3_e53_sf1_smoke)|
-| B4   | E53传感器   | e53_sc2_axis              | [E53_SC2案例扩展板测试](/applications/B4_e53_sc2_axis)|
-| B5   | E53传感器   | e53_st1_gps               | [E53_ST1案例扩展板测试](/applications/B5_e53_st1_gps)|
-| B6   | E53传感器   | e53_is1_infrared          | [E53_IS1案例扩展板测试](/applications/B6_e53_is1_infrared)|
+
 
 ## 四、端云案例开发索引
 
